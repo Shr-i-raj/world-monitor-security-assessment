@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIH 2026 PS #163 - Security Assessment of World Monitor</title>
+  <title>SIH 2026 PS #163 - Official Presentation Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0b0f19;
-      --card-bg: rgba(22, 30, 46, 0.8);
+      --card-bg: rgba(22, 30, 46, 0.85);
       --card-border: rgba(0, 242, 254, 0.2);
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
@@ -142,54 +142,6 @@
       margin-top: 3px;
     }
 
-    .vapt-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-
-    .vapt-table th, .vapt-table td {
-      padding: 12px 16px;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .vapt-table th {
-      background: rgba(0, 242, 254, 0.1);
-      color: var(--accent-cyan);
-      font-weight: 700;
-    }
-
-    .badge-high {
-      background: rgba(239, 68, 68, 0.2);
-      color: #f87171;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-
-    .badge-medium {
-      background: rgba(251, 191, 36, 0.2);
-      color: #fde047;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-
-    code-block {
-      font-family: 'JetBrains Mono', monospace;
-      background: #090d16;
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem;
-      color: #38bdf8;
-      white-space: pre-wrap;
-      display: block;
-    }
-
     .controls {
       position: absolute;
       bottom: 20px;
@@ -228,227 +180,156 @@
 
   <div class="deck-container">
 
-    <!-- SLIDE 1 -->
+    <!-- SLIDE 1: TITLE PAGE -->
     <div class="slide active">
       <div class="slide-header">
-        <div class="slide-tag">Smart India Hackathon 2026</div>
+        <div class="slide-tag">SMART INDIA HACKATHON 2026</div>
         <div class="slide-tag" style="color: var(--accent-yellow)">NTRO Sponsoring Agency</div>
       </div>
       <div class="slide-body" style="justify-content: center; align-items: center; text-align: center;">
-        <h1 style="font-size: 3.2rem; font-weight: 800; background: linear-gradient(135deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;">
+        <h1 style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;">
           Security Assessment of World Monitor
         </h1>
-        <p style="font-size: 1.3rem; color: var(--text-muted); max-width: 800px; margin-bottom: 24px;">
-          Comprehensive Vulnerability Assessment, Penetration Testing (VAPT), Proof-of-Concept Exploitation & Production Security Hardening
+        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px; margin-bottom: 24px;">
+          Official SIH 2026 Idea Presentation Deck (Problem Statement ID: SIH26163)
         </p>
-        <div style="display: flex; gap: 16px;">
-          <span style="background: rgba(0,242,254,0.1); border: 1px solid var(--accent-cyan); padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--accent-cyan);">Problem ID: SIH26163 (S.No 163)</span>
-          <span style="background: rgba(251,191,36,0.1); border: 1px solid var(--accent-yellow); padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--accent-yellow);">Category: Software Edition</span>
-          <span style="background: rgba(79,172,254,0.1); border: 1px solid var(--accent-blue); padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--accent-blue);">Theme: Smart Automation</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left; max-width: 700px; width: 100%; margin: 0 auto; background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+          <div><strong>Problem Statement ID:</strong> SIH26163</div>
+          <div><strong>Serial No:</strong> 163</div>
+          <div><strong>PS Category:</strong> Software Edition</div>
+          <div><strong>Theme:</strong> Smart Automation</div>
+          <div><strong>Sponsoring Agency:</strong> NTRO</div>
+          <div><strong>Team Name:</strong> Security Assessment Team</div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 2 -->
+    <!-- SLIDE 2: PROPOSED SOLUTION -->
     <div class="slide">
       <div class="slide-header">
-        <div class="slide-tag">Problem Background</div>
-        <div class="slide-title">Target Platform & NTRO Requirements</div>
+        <div class="slide-tag">Slide 2</div>
+        <div class="slide-title">PROPOSED SOLUTION</div>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div class="card">
-            <h3>Target Platform: World Monitor</h3>
+            <h3>Proposed Solution & Prototype</h3>
             <ul>
-              <li>Real-time geospatial intelligence & OSINT threat monitoring platform.</li>
-              <li>Aggregates news feeds, RSS channels, API streams, and map visualization.</li>
-              <li>Handles user authentication, Pro key entitlements, and user preference sync.</li>
-              <li>Architected using Vercel Edge Runtime serverless functions, Vite, and Convex.</li>
+              <li>End-to-end VAPT audit framework & automated security test suite for World Monitor.</li>
+              <li>Evaluates 7 vulnerability vectors across Edge proxies, CORS rules, and DOM parsers.</li>
             </ul>
           </div>
           <div class="card">
-            <h3>NTRO Challenge Deliverables</h3>
+            <h3>Addressing NTRO Requirements</h3>
             <ul>
-              <li>Identify security vulnerabilities across API handlers and client-side code.</li>
-              <li>Evaluate risks to confidentiality, integrity, and system availability.</li>
-              <li>Demonstrate proof-of-concept (PoC) exploits in a controlled environment.</li>
-              <li>Provide automated audit runner, code-level patches, and VAPT report.</li>
+              <li>Provides CVSS v3.1 metrics, root cause analysis, and 5 production-ready code patches.</li>
+              <li>Includes executable Python test suite (run_security_audit.py) for CI/CD regression testing.</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 3 -->
+    <!-- SLIDE 3: TECHNICAL APPROACH -->
     <div class="slide">
       <div class="slide-header">
-        <div class="slide-tag">Technical Deliverables</div>
-        <div class="slide-title">Methodology & Delivered Assets</div>
+        <div class="slide-tag">Slide 3</div>
+        <div class="slide-title">TECHNICAL APPROACH</div>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div class="card">
-            <h3>1. VAPT Security Audit Report</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px;">SECURITY_ASSESSMENT_REPORT.md</p>
-            <p style="font-size: 0.95rem; color: #e2e8f0;">Formal audit document detailing 7 security findings with CVSS v3.1 metrics, OWASP Top 10 mappings, and remediation steps.</p>
+            <h3>Technologies & Frameworks</h3>
+            <ul>
+              <li>Python 3, TypeScript/JavaScript, Vercel Edge Runtime.</li>
+              <li>OWASP WSTG v4.2, OWASP Top 10 API (2023), NIST SP 800-115, CVSS v3.1.</li>
+            </ul>
           </div>
           <div class="card">
-            <h3>2. Discovery Methodology Document</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px;">VULNERABILITY_DISCOVERY_METHODOLOGY.md</p>
-            <p style="font-size: 0.95rem; color: #e2e8f0;">Step-by-step technical audit guide detailing SAST code review, Edge Runtime TOCTOU reverse engineering, and DNS rebinding analysis.</p>
-          </div>
-          <div class="card">
-            <h3>3. Automated Python Test Suite</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px;">security_tests/run_security_audit.py</p>
-            <p style="font-size: 0.95rem; color: #e2e8f0;">Executable test suite automating verification of all 7 vulnerabilities with a 100% pass rate.</p>
-          </div>
-          <div class="card">
-            <h3>4. Security Code Patches</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px;">security_fixes/</p>
-            <p style="font-size: 0.95rem; color: #e2e8f0;">5 production-ready TypeScript/JavaScript patches for Edge handlers, CORS refusal rules, and session binding.</p>
+            <h3>Audit Methodology</h3>
+            <ul>
+              <li>1. Static Application Security Testing (SAST) on Edge handlers.</li>
+              <li>2. Edge reverse engineering of TOCTOU DNS rebinding gaps.</li>
+              <li>3. Dynamic verification via Python PoC test harness (100% pass rate).</li>
+              <li>4. Developing socket pinning & recursive redirect validation patches.</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 4 -->
+    <!-- SLIDE 4: FEASIBILITY AND VIABILITY -->
     <div class="slide">
       <div class="slide-header">
-        <div class="slide-tag">Audit Results</div>
-        <div class="slide-title">Vulnerability Summary Matrix</div>
+        <div class="slide-tag">Slide 4</div>
+        <div class="slide-title">FEASIBILITY AND VIABILITY</div>
       </div>
       <div class="slide-body">
-        <table class="vapt-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Vulnerability Title</th>
-              <th>CVSS v3.1</th>
-              <th>Severity</th>
-              <th>Affected File</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>VULN-01</td>
-              <td>DNS Rebinding / TOCTOU SSRF in MCP Proxy</td>
-              <td>8.2</td>
-              <td><span class="badge-high">HIGH</span></td>
-              <td>api/mcp-proxy.ts</td>
-            </tr>
-            <tr>
-              <td>VULN-02</td>
-              <td>RSS Proxy Allowlist Bypass via Redirection</td>
-              <td>7.5</td>
-              <td><span class="badge-high">HIGH</span></td>
-              <td>api/rss-proxy.js</td>
-            </tr>
-            <tr>
-              <td>VULN-03</td>
-              <td>Webhook Destination DNS Rebinding Gap</td>
-              <td>7.2</td>
-              <td><span class="badge-high">HIGH</span></td>
-              <td>api/_notification-webhook-ssrf.ts</td>
-            </tr>
-            <tr>
-              <td>VULN-04</td>
-              <td>CORS Origin Reflection with Credentials</td>
-              <td>6.5</td>
-              <td><span class="badge-medium">MEDIUM</span></td>
-              <td>api/_cors.js</td>
-            </tr>
-            <tr>
-              <td>VULN-05</td>
-              <td>Indefinite Anonymous Session Token Replay</td>
-              <td>6.1</td>
-              <td><span class="badge-medium">MEDIUM</span></td>
-              <td>api/_session.js</td>
-            </tr>
-            <tr>
-              <td>VULN-06</td>
-              <td>Client-Side DOM XSS Risk in RSS Parser</td>
-              <td>6.1</td>
-              <td><span class="badge-medium">MEDIUM</span></td>
-              <td>src/services/rss.ts</td>
-            </tr>
-            <tr>
-              <td>VULN-07</td>
-              <td>Resource Exhaustion via Unbounded JSON Prefs</td>
-              <td>5.3</td>
-              <td><span class="badge-medium">MEDIUM</span></td>
-              <td>api/user-prefs.ts</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Feasibility & Risks Identified</h3>
+            <ul>
+              <li>Test suite executes in under 5 seconds with zero external library dependencies.</li>
+              <li>VULN-01/03 (High): DNS Rebinding SSRF to AWS/GCP IMDS (169.254.169.254).</li>
+              <li>VULN-02 (High): RSS Proxy domain allowlist bypass via open HTTP redirects.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Hardening Controls</h3>
+            <ul>
+              <li>Socket Pinning: Single-pass IP connection with Host retention (patch_mcp_proxy_ssrf.ts).</li>
+              <li>Redirect Inspection: Recursive DNS IP validation on redirect hops (patch_rss_proxy_redirects.js).</li>
+              <li>CORS Sanitization: Neutralizing credentials reflection on refusal headers (patch_cors_refusal.js).</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 5 -->
+    <!-- SLIDE 5: IMPACT AND BENEFITS -->
     <div class="slide">
       <div class="slide-header">
-        <div class="slide-tag">Key Finding</div>
-        <div class="slide-title">DNS Rebinding TOCTOU in Edge Runtime</div>
+        <div class="slide-tag">Slide 5</div>
+        <div class="slide-title">IMPACT AND BENEFITS</div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Infrastructure Protection</h3>
+            <ul>
+              <li>Blocks unauthorized access to 169.254.169.254, protecting AWS/GCP instance tokens.</li>
+              <li>Prevents malicious pivoting to loopback addresses (127.0.0.1:8080) and Redis ports.</li>
+              <li>Protects Edge functions against CPU resource exhaustion attacks.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Operational Value for NTRO</h3>
+            <ul>
+              <li>Ensures OSINT geospatial dashboard views remain immune to stored DOM XSS payloads.</li>
+              <li>Binds anonymous session tokens to IP subnets and reduces TTL to 1 hour.</li>
+              <li>Immediate drop-in production code patches and automated CI/CD regression runner.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: RESEARCH AND REFERENCES -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-tag">Slide 6</div>
+        <div class="slide-title">RESEARCH AND REFERENCES</div>
       </div>
       <div class="slide-body">
         <div class="card" style="height: 100%;">
-          <h3>VULN-01 Deep Dive: api/mcp-proxy.ts</h3>
+          <h3>Project Repository & Standards References</h3>
           <ul>
-            <li><strong>Edge Runtime Constraint:</strong> Vercel Edge Runtime native fetch() cannot pin HTTP sockets to pre-resolved IP addresses.</li>
-            <li><strong>Check Phase:</strong> Pre-flight DoH resolution checks target.attacker.com. Returns 93.184.216.34 (public IP) and passes filter.</li>
-            <li><strong>Use Phase:</strong> Handler invokes native fetch(). Vercel Edge Runtime executes a second independent DNS resolution.</li>
-            <li><strong>Exploit Vector:</strong> Attacker sets DNS TTL = 0. Second query returns 169.254.169.254 (AWS EC2 Metadata Endpoint), exfiltrating internal cloud credentials.</li>
-            <li><strong>Our Fix:</strong> Developed patch_mcp_proxy_ssrf.ts introducing socket-pinned single-pass IP connection handling with Host header retention.</li>
+            <li><strong>Official GitHub Repository:</strong> <a href="https://github.com/Shr-i-raj/world-monitor-security-assessment" target="_blank" style="color: var(--accent-cyan);">https://github.com/Shr-i-raj/world-monitor-security-assessment</a></li>
+            <li><strong>VAPT Audit Report:</strong> SECURITY_ASSESSMENT_REPORT.md (Full CVSS v3.1 metrics & root cause analysis)</li>
+            <li><strong>Discovery Methodology:</strong> VULNERABILITY_DISCOVERY_METHODOLOGY.md (Step-by-step SAST & Edge reverse engineering guide)</li>
+            <li><strong>Frameworks:</strong> OWASP WSTG v4.2, OWASP Top 10 API (2023), NIST SP 800-115, CVSS v3.1</li>
           </ul>
         </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 6 -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-tag">Verification</div>
-        <div class="slide-title">Automated Security Audit Runner</div>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div class="card">
-            <h3>Automated Test Suite</h3>
-            <ul>
-              <li>File: security_tests/run_security_audit.py</li>
-              <li>Automates execution & verification for all 7 vulnerability test cases.</li>
-              <li>Simulates DNS rebinding, CORS refusal headers, session replay, and RSS open redirects.</li>
-              <li>Zero external dependencies required (Python 3 standard library).</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Verified Terminal Output</h3>
-            <code-block>$ python3 security_tests/run_security_audit.py
-[INFO] Testing VULN-01: MCP Proxy SSRF...
-[WARN] VULN-01 Verified: DNS Rebinding to IMDS (169.254.169.254)
-[INFO] Testing VULN-02: RSS Proxy Redirect...
-[WARN] VULN-02 Verified: Redirect check missing IP
-...
-Total Verified Vulnerabilities: 7 / 7
-Automated Audit Verification Completed Successfully!</code-block>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 7 -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-tag">Conclusion</div>
-        <div class="slide-title">Project Completion & GitHub Link</div>
-      </div>
-      <div class="slide-body" style="justify-content: center; align-items: center; text-align: center;">
-        <h2 style="font-size: 2rem; color: var(--accent-cyan); margin-bottom: 16px;">All SIH 2026 PS #163 Requirements Delivered</h2>
-        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 750px; margin-bottom: 24px;">
-          Full VAPT Audit Report, Discovery Methodology Guide, SIH Presentation Deck, Automated Python Audit Suite, PoC Exploits, and Production Security Patches published to GitHub.
-        </p>
-        <a href="https://github.com/Shr-i-raj/world-monitor-security-assessment" target="_blank" style="background: linear-gradient(135deg, #00f2fe, #4facfe); color: #0b0f19; font-weight: 800; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);">
-          https://github.com/Shr-i-raj/world-monitor-security-assessment
-        </a>
       </div>
     </div>
 
@@ -456,7 +337,7 @@ Automated Audit Verification Completed Successfully!</code-block>
 
   <div class="controls">
     <button class="btn-nav" id="prevBtn">← Prev</button>
-    <span class="slide-counter" id="counter">Slide 1 of 7</span>
+    <span class="slide-counter" id="counter">Slide 1 of 6</span>
     <button class="btn-nav" id="nextBtn">Next →</button>
   </div>
 

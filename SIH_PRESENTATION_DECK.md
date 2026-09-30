@@ -1,118 +1,98 @@
-# SMART INDIA HACKATHON (SIH) 2026 - PRESENTATION DECK
+# SMART INDIA HACKATHON (SIH) 2026 - OFFICIAL IDEA PRESENTATION DECK
 ## Problem Statement ID: SIH26163 (Serial No. 163)
-### Title: Security Assessment of the World Monitor Application
+### Title: Security Assessment of the World Monitor application
 **Sponsoring Ministry / Organization**: National Technical Research Organisation (NTRO)  
 **Theme**: Smart Automation / Cybersecurity  
 **Category**: Software Edition  
 
 ---
 
-## Slide 1: Title & Team Overview
+## Slide 1: Title Page
 
-- **Project Title**: Comprehensive Security Assessment & Hardening Framework for World Monitor
-- **Problem Statement ID**: SIH26163 (S.No 163)
+- **Event**: SMART INDIA HACKATHON 2026
+- **Problem Statement ID**: SIH26163 (Serial No. 163)
+- **Problem Statement Title**: Security Assessment of the World Monitor application
+- **Theme**: Smart Automation / Cybersecurity
+- **PS Category**: Software Edition
 - **Sponsoring Agency**: National Technical Research Organisation (NTRO)
-- **Category**: Software Edition
-- **Domain**: Cybersecurity & Smart Automation
+- **Team Name**: Security Assessment Team
 
 ---
 
-## Slide 2: Problem Statement & Background
+## Slide 2: Proposed Solution
 
-### Context & Challenge
-- **Target Application**: World Monitor (`https://www.worldmonitor.app` / `https://github.com/koala73/worldmonitor`)
-- **App Nature**: Real-time geospatial monitoring, threat intelligence, RSS feed aggregation, and OSINT visualization platform.
-- **Challenge Description**: Conduct an authorized security assessment to identify vulnerabilities affecting confidentiality, integrity, or availability, generate proof-of-concept (PoC) exploits, evaluate business impact, and provide actionable code-level mitigations.
+### Proposed Solution & Prototype Overview
+- Comprehensive Vulnerability Assessment & Penetration Testing (VAPT) audit framework and automated security test suite for World Monitor.
+- Covers end-to-end evaluation of Edge Runtime proxy handlers, CORS security policies, session lifecycle, and client-side DOM parsers.
 
-### Key Assessment Areas
-1. Authentication & Session Management
-2. Authorization & Access Control (RBAC)
-3. Input Validation & Data Handling (XSS / Injection)
-4. API Security & Server-Side Request Forgery (SSRF)
-5. Client-Side Security Controls & CORS Policies
+### How It Addresses NTRO Requirements
+- Identifies 7 critical/high/medium security findings with full root cause analysis and CVSS v3.1 vector metrics.
+- Delivers 5 production-ready code patches preventing cloud metadata exfiltration (`169.254.169.254`) and internal service exposure.
+- Provides an executable Python test suite (`security_tests/run_security_audit.py`) for continuous automated security verification.
 
----
-
-## Slide 3: Proposed Solution & Methodology
-
-### Our Approach
-We performed a systematic VAPT audit adhering to **OWASP Web Security Testing Guide (WSTG v4.2)**, **OWASP Top 10 API Security Risks (2023)**, and **NIST SP 800-115**.
-
-### Key Deliverables Produced
-1. **Full VAPT Audit Report (`SECURITY_ASSESSMENT_REPORT.md`)**: Complete technical breakdown of 7 identified vulnerabilities with CVSS v3.1 ratings.
-2. **Automated Security Audit Suite (`security_tests/run_security_audit.py`)**: Executable Python testing harness for continuous security verification.
-3. **Proof-of-Concept Exploit Demonstrators (`poc_exploits/`)**: Safe, controlled PoC scripts validating SSRF, CORS reflection, and session reuse.
-4. **Security Hardening Code Patches (`security_fixes/`)**: Production-ready TypeScript/JavaScript patches for edge functions, proxy handlers, and CORS rules.
+### Innovation and Uniqueness
+- **Socket-Pinned Edge DNS Fix**: Solves the Vercel Edge Runtime DNS Rebinding (TOCTOU) vulnerability with single-pass IP connection handling.
+- **Zero-Dependency Audit Runner**: Python-based automated testing harness operating out-of-the-box in any CI/CD pipeline.
 
 ---
 
-## Slide 4: Key Security Findings & CVSS Matrix
+## Slide 3: Technical Approach
 
-| Vulnerability Title | Category | CVSS v3.1 | Severity | Affected Component |
-|---|---|---|---|---|
-| **DNS Rebinding & TOCTOU SSRF** | SSRF / DNS Rebind | **8.2** | **High** | `api/mcp-proxy.ts` |
-| **RSS Proxy Allowlist Bypass** | SSRF / Open Redirect | **7.5** | **High** | `api/rss-proxy.js` |
-| **Webhook DNS Rebinding Gap** | SSRF / Webhook Security | **7.2** | **High** | `api/_notification-webhook-ssrf.ts` |
-| **CORS Origin Echo with Credentials** | CORS Misconfig | **6.5** | **Medium** | `api/_cors.js` |
-| **Indefinite Anonymous Session Reuse** | Session Replay | **6.1** | **Medium** | `api/_session.js` |
-| **Client-Side DOM XSS Risk** | DOM XSS | **6.1** | **Medium** | `src/services/rss.ts` |
-| **Unbounded Prefs JSON Exhaustion** | Denial of Service | **5.3** | **Medium** | `api/user-prefs.ts` |
+### Technologies & Frameworks Used
+- **Languages & Runtimes**: Python 3 (Audit Runner/PoCs), TypeScript / JavaScript (Edge Handlers).
+- **Standards & Protocols**: OWASP WSTG v4.2, OWASP Top 10 API (2023), NIST SP 800-115, CVSS v3.1.
+- **Target Architecture**: Vercel Edge Functions, Vite, Convex Database, DOMPurify.
 
----
-
-## Slide 5: Deep Dive: SSRF & DNS Rebinding in Edge Proxies
-
-### Critical Vulnerability: DNS Rebinding TOCTOU in MCP Proxy (`api/mcp-proxy.ts`)
-- **Root Cause**: Edge Runtime fetch executes a **second DNS lookup** at HTTP socket creation time after initial IP check.
-- **Attack Vector**: Attacker sets DNS TTL = 0. 1st lookup returns public IP (passes filter); 2nd lookup returns `169.254.169.254` (AWS IMDS metadata) or `127.0.0.1`.
-- **Our Remediation**: Created `patch_mcp_proxy_ssrf.ts` introducing socket-pinned single-pass IP connection handling with Host header retention.
-
-```
-Attacker DNS (TTL=0) ──> Check Phase: 1.1.1.1 (Allowed) 
-                     ──> Fetch Phase: 169.254.169.254 (REBOUND -> IMDS Leaked)
-```
+### Audit Methodology & Execution Process
+1. **Static Application Security Testing (SAST)**: Code auditing of `api/mcp-proxy.ts`, `api/rss-proxy.js`, `api/_cors.js`, and `api/_session.js`.
+2. **Edge Reverse Engineering**: Uncovering Time-of-Check Time-of-Use (TOCTOU) DNS rebinding flaws during Edge Runtime fetch calls.
+3. **Dynamic Verification & PoC Suite**: Executing python-based exploits to verify loopback, metadata, and open redirect targets.
+4. **Security Hardening**: Constructing production code patches for single-pass socket pinning and recursive redirect validation.
 
 ---
 
-## Slide 6: Proof of Concept & Automated Test Suite
+## Slide 4: Feasibility and Viability
 
-### Automated Test Suite (`security_tests/run_security_audit.py`)
-- Python-based test runner capable of executing against target or local mock environments.
-- Automatically tests and verifies all 7 findings in under 5 seconds.
-- Provides clean JSON/Console diagnostic outputs for CI/CD integration.
+### Feasibility Analysis
+- Automated test suite (`security_tests/run_security_audit.py`) executes in under 5 seconds with zero external library dependencies.
+- Security patches are drop-in compatible with existing Vercel Edge Runtime functions and Node.js APIs.
 
-### Command to Execute Suite:
-```bash
-python3 security_tests/run_security_audit.py
-```
+### Identified Vulnerability Risks & Challenges
+- **VULN-01/03 (High - CVSS 8.2/7.2)**: DNS Rebinding SSRF to AWS/GCP IMDS (`169.254.169.254`) via unpinned Edge fetch.
+- **VULN-02 (High - CVSS 7.5)**: RSS Proxy domain allowlist bypass via open HTTP redirects.
+- **VULN-04 (Medium - CVSS 6.5)**: Refusal CORS headers echoing untrusted origins with `Access-Control-Allow-Credentials: true`.
 
----
-
-## Slide 7: Security Hardening Patches Developed
-
-We provided production-ready source code patches:
-1. `security_fixes/patch_mcp_proxy_ssrf.ts`: Socket-pinned DNS resolution.
-2. `security_fixes/patch_rss_proxy_redirects.js`: Recursive IP validation on redirect hops.
-3. `security_fixes/patch_cors_refusal.js`: Neutralized credentials reflection on 403/401 errors.
-4. `security_fixes/patch_session_binding.js`: Client IP subnet binding & 1-hour session TTL.
-5. `security_fixes/patch_user_prefs.ts`: Max payload size (64KB) and JSON depth limit checks.
+### Mitigation Strategies & Hardening Controls
+- **Socket-Pinned Resolution**: Single-pass IP connection with Host header retention (`security_fixes/patch_mcp_proxy_ssrf.ts`).
+- **Redirect Inspection**: Recursive DNS IP validation on every HTTP redirect hop (`security_fixes/patch_rss_proxy_redirects.js`).
+- **CORS Sanitization**: Neutralizing credentials reflection on 403/401 refusal headers (`security_fixes/patch_cors_refusal.js`).
 
 ---
 
-## Slide 8: Business Impact & Scalability
+## Slide 5: Impact and Benefits
 
-### Impact for NTRO & World Monitor Users
-- **Data Protection**: Prevents cloud metadata theft (`169.254.169.254`), protecting cloud credentials and internal database strings.
-- **System Availability**: Mitigates resource exhaustion attacks on serverless Edge functions.
-- **Platform Integrity**: Ensures OSINT monitoring dashboards remain free from stored DOM XSS payload injection.
+### Target Audience & Infrastructure Impact
+- **Cloud Metadata Defense**: Blocks unauthorized access to `169.254.169.254`, protecting AWS EC2 / GCP instance tokens.
+- **Internal Service Isolation**: Prevents malicious pivoting to loopback addresses (`127.0.0.1:8080`) and internal Redis ports.
+- **Resource Protection**: Prevents CPU resource exhaustion attacks on serverless Edge functions during degraded rate-limit states.
+
+### Platform & Operational Benefits
+- **Dashboard Data Integrity**: Ensures OSINT geospatial threat intelligence feeds remain immune to stored DOM XSS payloads.
+- **Session Security**: Binds anonymous session tokens to IP subnets and reduces TTL from 12 hours to 1 hour.
+- **Turnkey Value for NTRO**: Immediate production code patches and automated CI/CD security regression test suite.
 
 ---
 
-## Slide 9: Conclusion & GitHub Repository
+## Slide 6: Research and References
 
-### Summary of Accomplishments
-- Handled end-to-end security assessment requirements for SIH 2026 PS #163.
-- Delivered full documentation, automated audit runner, PoCs, and code patches.
-- Published complete work to official project GitHub repository.
+### Project Reference & Code Assets
+- **Official GitHub Repository**: `https://github.com/Shr-i-raj/world-monitor-security-assessment`
+- **Full VAPT Audit Report**: `SECURITY_ASSESSMENT_REPORT.md` (Complete technical breakdown of 7 findings & CVSS v3.1 metrics)
+- **Discovery Methodology Guide**: `VULNERABILITY_DISCOVERY_METHODOLOGY.md` (Step-by-step SAST & Edge reverse engineering guide)
+- **Automated Test Harness**: `security_tests/run_security_audit.py` (Python verification suite)
 
-**GitHub Repository**: [`https://github.com/Shr-i-raj/world-monitor-security-assessment.git`](https://github.com/Shr-i-raj/world-monitor-security-assessment.git)
+### Standards & Framework References
+- OWASP Web Security Testing Guide (WSTG v4.2)
+- OWASP Top 10 API Security Risks (2023 Edition)
+- NIST SP 800-115 (Technical Guide to Information Security Testing and Assessment)
+- CVSS v3.1 Vulnerability Scoring Standard

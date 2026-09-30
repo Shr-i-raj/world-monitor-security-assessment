@@ -1,6 +1,7 @@
 worldmonitor_target/
 .venv/
 build_pptx.py
+populate_official_template.py
 *.log
 __pycache__/
 .DS_Store
