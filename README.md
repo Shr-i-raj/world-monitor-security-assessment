@@ -14,6 +14,7 @@ This repository contains the complete security evaluation, vulnerability assessm
 ```
 .
 ├── SECURITY_ASSESSMENT_REPORT.md   # Full VAPT Audit Report & Detailed Technical Vulnerability Breakdown
+├── VULNERABILITY_DISCOVERY_METHODOLOGY.md # Comprehensive Methodology & Step-by-Step Audit Process
 ├── SIH_PRESENTATION_DECK.md        # Formatted SIH 2026 Executive Pitch Deck for NTRO Judges
 ├── README.md                       # Main Repository Documentation & Setup Guide
 ├── security_tests/
