@@ -1,4 +1,6 @@
 worldmonitor_target/
+.venv/
+build_pptx.py
 *.log
 __pycache__/
 .DS_Store
