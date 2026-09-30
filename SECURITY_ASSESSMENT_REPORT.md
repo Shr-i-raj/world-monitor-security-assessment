@@ -230,4 +230,4 @@ python3 security_tests/run_security_audit.py
    - Enforce 64 KB payload size limits and max nesting depth in `api/user-prefs.ts`.
 
 ---
-*Report compiled and verified by AI Security Analyst Team for SIH 2026 NTRO Competition.*
+*Report compiled and verified by Security Assessment Team for SIH 2026 NTRO Competition.*
